@@ -8,7 +8,7 @@
 int main(void)
 {
     binary_tree_t *root;
-    size_t depth;
+    size_t nodes;
 
     root = binary_tree_node(NULL, 98);
     root->left = binary_tree_node(root, 12);
@@ -17,11 +17,11 @@ int main(void)
     binary_tree_insert_right(root, 128);
     binary_tree_print(root);
 
-    depth = binary_tree_depth(root);
-    printf("Depth of %d: %u\n", root->n, depth);
-    depth = binary_tree_depth(root->right);
-    printf("Depth of %d: %u\n", root->right->n, depth);
-    depth = binary_tree_depth(root->left->right);
-    printf("Depth of %d: %u\n", root->left->right->n, depth);
+    nodes = binary_tree_nodes(root);
+    printf("Nodes in %d: %u\n", root->n, nodes);
+    nodes = binary_tree_nodes(root->right);
+    printf("Nodes in %d: %u\n", root->right->n, nodes);
+    nodes = binary_tree_nodes(root->left->right);
+    printf("Nodes in %d: %u\n", root->left->right->n, nodes);
     return (0);
 }
