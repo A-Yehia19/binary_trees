@@ -1,11 +1,10 @@
 #include "binary_trees.h"
 
 
-/*
-perfect binary tree:
-	Special type of binary tree in which all the leaf nodes are
-	at the same depth, and all non-leaf nodes have two children.
-*/
+/* perfect binary tree: */
+/*   Special tree which all the leaf nodes are at the same depth */
+/*   and all non-leaf nodes have two children. */
+
 
 /**
  * node_height - measures the height of a binary tree
@@ -41,15 +40,19 @@ size_t node_height(const binary_tree_t *tree)
 */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
+	int left, right;
+
 	/* if no tree */
 	if (tree == NULL)
 		return (0);
-	
+
 	if (node_height(tree->right) != node_height(tree->left))
 		return (0);
 
 	if (tree->left == NULL && tree->right == NULL)
 		return (1);
 
-	return (binary_tree_is_perfect(tree->left) & binary_tree_is_perfect(tree->right));
+	left = binary_tree_is_perfect(tree->left);
+	right = binary_tree_is_perfect(tree->right);
+	return (left & right);
 }

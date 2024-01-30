@@ -1,10 +1,9 @@
 #include "binary_trees.h"
 
-/*
-balance factor:
-	difference between the height of the left subtree and
-	the height of the right subtree.
-*/
+
+/* balance factor: */
+/*   difference between the height of the left and the right subtrees */
+
 
 /**
  * branch_height - measures the height of a binary tree

@@ -1,11 +1,9 @@
 #include "binary_trees.h"
 
 
-/*
-full binary tree:
-	A full binary tree is a binary tree with either
-	zero or two child nodes for each node.
-*/
+/* full binary tree: */
+/*   tree with either zero or two child nodes for each node. */
+
 
 /**
  * binary_tree_is_full - checks if a binary tree is full

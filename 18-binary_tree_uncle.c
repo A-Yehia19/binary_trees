@@ -1,10 +1,9 @@
 #include "binary_trees.h"
 
 
-/*
-uncle:
-	sibling of the parent node
-*/
+/* uncle: */
+/*   sibling of the parent node */
+
 
 /**
  * node_sibling - finds the sibling of a node
