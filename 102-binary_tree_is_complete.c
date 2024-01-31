@@ -16,11 +16,11 @@ int is_leaf(const binary_tree_t *node)
 {
 	if (node == NULL)
 		return (0);
-	
+
 	if (node->left == NULL && node->right == NULL)
 		return (1);
 	else
-		return (0);	
+		return (0);
 }
 
 /**
@@ -35,7 +35,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 
 	if (tree == NULL)
 		return (0);
-	
+
 	/* if root is a leaf */
 	if (is_leaf(tree))
 		return (1);
@@ -47,7 +47,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 	/* if right branch is filled and left isnt then not complete */
 	else if (tree->left == NULL && tree->right != NULL)
 		return (0);
-	
+
 	left = binary_tree_is_complete(tree->left);
 	right = binary_tree_is_complete(tree->right);
 	return(left & right);
