@@ -50,7 +50,7 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 
 	left = binary_tree_is_complete(tree->left);
 	right = binary_tree_is_complete(tree->right);
-	return(left & right);
+	return (left & right);
 }
 
 /* code not fully optimal */
