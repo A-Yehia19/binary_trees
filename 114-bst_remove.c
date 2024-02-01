@@ -21,19 +21,15 @@ bst_t *bst_remove_one_child(bst_t *root)
 		tmp = root->right;
 		if (tmp != NULL)
 			tmp->parent = root->parent;
-
-		free(root);
-		return (tmp);
 	}
 	else if (root->right == NULL)
 	{
 		tmp = root->left;
 		if (tmp != NULL)
 			tmp->parent = root->parent;
-
-		free(root);
-		return (tmp);
 	}
+	free(root);
+	return (tmp);
 }
 
 /**
