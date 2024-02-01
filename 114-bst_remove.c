@@ -38,33 +38,37 @@ bst_t *bst_remove(bst_t *root, int value)
 {
 	bst_t *tmp, *successor;
 	if (root == NULL)
-        return root;
- 
-    /* search for node to be deleted */
-    if (root->n > value) {
-        root->left = bst_remove(root->left, value);
-        return root;
-    }
-    else if (root->n < value) {
-        root->right = bst_remove(root->right, value);
-        return root;
-    }
+		return root;
+
+	/* search for node to be deleted */
+	if (root->n > value) {
+		root->left = bst_remove(root->left, value);
+		return root;
+	}
+	else if (root->n < value) {
+		root->right = bst_remove(root->right, value);
+		return root;
+	}
 
 	/* node found */
 
 	/* If one of the children is empty */
-    if (root->left == NULL) {
-        tmp = root->right;
-		tmp->parent = root->parent;
-        free (root);
-        return tmp;
-    }
-    else if (root->right == NULL) {
-        tmp = root->left;
-		tmp->parent = root->parent;
-        free (root);
-        return tmp;
-    }
+	if (root->left == NULL) {
+		tmp = root->right;
+		if (tmp != NULL)
+			tmp->parent = root->parent;
+
+		free (root);
+		return tmp;
+	}
+	else if (root->right == NULL) {
+		tmp = root->left;
+		if (tmp != NULL)
+			tmp->parent = root->parent;
+
+		free (root);
+		return tmp;
+	}
 
 	/* if have 2 children */
 
@@ -76,19 +80,16 @@ bst_t *bst_remove(bst_t *root, int value)
 
 
 	if (successor->parent != root)
-	{
 		successor->parent->left = successor->right;
-		if (successor->right)
-			successor->right->parent = successor->parent;
-	}
+
 	else
-	{
 		successor->parent->right = successor->right;
-		if (successor->right)
-			successor->right->parent = successor->parent;
-	}
+
+	/* re-adjust parents */
+	if (successor->right != NULL)
+		successor->right->parent = successor->parent;
 
 	root->n = successor->n;
 	free (successor);
-	return root;
+	return (root);
 }
