@@ -76,9 +76,17 @@ bst_t *bst_remove(bst_t *root, int value)
 
 
 	if (successor->parent != root)
+	{
 		successor->parent->left = successor->right;
+		if (successor->right)
+			successor->right->parent = successor->parent;
+	}
 	else
+	{
 		successor->parent->right = successor->right;
+		if (successor->right)
+			successor->right->parent = successor->parent;
+	}
 
 	root->n = successor->n;
 	free (successor);
