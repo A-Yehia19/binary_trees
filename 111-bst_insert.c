@@ -9,50 +9,43 @@
 */
 bst_t *bst_insert(bst_t **tree, int value)
 {
-	bst_t *node;
-
 	/* if no tree was created*/
-	if(*tree == NULL)
+	if (*tree == NULL)
 	{
-		node = binary_tree_node(NULL, value);
-		if (node == NULL)
+		*tree = binary_tree_node(NULL, value);
+		if (*tree == NULL)
 			return (NULL);
 
-		*tree = node;
-		return (node);
+		return (*tree);
 	}
 
 	/* already in the tree */
 	if (value == (*tree)->n)
-		return(NULL);
+		return (NULL);
 
 	/* should insert in the left branch */
-	else if (value < (*tree)->n){
+	else if (value < (*tree)->n)
 		if ((*tree)->left == NULL)
 		{
-			node = binary_tree_node(*tree, value);
-			if (node == NULL)
+			(*tree)->left = binary_tree_node(*tree, value);
+			if ((*tree)->left == NULL)
 				return (NULL);
 
-			(*tree)->left = node;
-			return (node);
+			return ((*tree)->left);
 		}
 		else
 			return (bst_insert(&((*tree)->left), value));
-	}
+
 	/* should insert in the right branch */
 	else
-	{
 		if ((*tree)->right == NULL)
 		{
-			node = binary_tree_node(*tree, value);
-			if (node == NULL)
+			(*tree)->right = binary_tree_node(*tree, value);
+			if ((*tree)->right == NULL)
 				return (NULL);
 
-			(*tree)->right = node;
-			return (node);
+			return ((*tree)->right);
 		}
 		else
 			return (bst_insert(&((*tree)->right), value));
-	}
 }

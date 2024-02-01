@@ -24,7 +24,8 @@ int is_BST(const binary_tree_t *tree, int lower_limit, int upper_limit)
 	if (tree == NULL)
 		return (1);
 
-	if (lower_limit < tree->n && tree->n < upper_limit){
+	if (lower_limit < tree->n && tree->n < upper_limit)
+	{
 		left = is_BST(tree->left, lower_limit, tree->n);
 		right = is_BST(tree->right, tree->n, upper_limit);
 		return (left & right);
